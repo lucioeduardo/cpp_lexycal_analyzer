@@ -720,131 +720,131 @@ private CppToken createToken(String name, String value) {
             }
           case 54: break;
           case 5: 
-            { return createToken("lessThan", "");
+            { return createToken("operator","lessThan");
             }
           case 55: break;
           case 6: 
-            { return createToken("modulus", "");
+            { return createToken("operator","modulus");
             }
           case 56: break;
           case 7: 
-            { return createToken("bracesLeft", "");
+            { return createToken("operator", "bracesLeft");
             }
           case 57: break;
           case 8: 
-            { return createToken("greaterThan", "");
+            { return createToken("operator","greaterThan");
             }
           case 58: break;
           case 9: 
-            { return createToken("bracesRight", "");
+            { return createToken("operator", "bracesRight");
             }
           case 59: break;
           case 10: 
-            { return createToken("colon", "");
+            { return createToken("operator", "colon");
             }
           case 60: break;
           case 11: 
-            { return createToken("bracketsRight", "");
+            { return createToken("operator", "bracketsRight");
             }
           case 61: break;
           case 12: 
-            { return createToken("preProcessor", "");
+            { return createToken("operator", "preProcessor");
             }
           case 62: break;
           case 13: 
-            { return createToken("bitAnd", "");
+            { return createToken("operator","bitAnd");
             }
           case 63: break;
           case 14: 
-            { return createToken("xor", "");
+            { return createToken("operator","xor");
             }
           case 64: break;
           case 15: 
-            { return createToken("bitNot", "");
+            { return createToken("operator","bitNot");
             }
           case 65: break;
           case 16: 
-            { return createToken("not", "");
+            { return createToken("operator","not");
             }
           case 66: break;
           case 17: 
-            { return createToken("assignment", "");
+            { return createToken("operator","assignment");
             }
           case 67: break;
           case 18: 
-            { return createToken("parenthesesLeft", "");
+            { return createToken("operator", "parenthesesLeft");
             }
           case 68: break;
           case 19: 
-            { return createToken("parenthesesRight", "");
+            { return createToken("operator", "parenthesesRight");
             }
           case 69: break;
           case 20: 
-            { return createToken("comma", "");
+            { return createToken("operator", "comma");
             }
           case 70: break;
           case 21: 
-            { return createToken("semiColon", "");
+            { return createToken("operator", "semiColon");
             }
           case 71: break;
           case 22: 
-            { return createToken("asterisk", "");
+            { return createToken("operator", "asterisk");
             }
           case 72: break;
           case 23: 
-            { return createToken("addition", "");
+            { return createToken("operator","addition");
             }
           case 73: break;
           case 24: 
-            { return createToken("subtraction", "");
+            { return createToken("operator","subtraction");
             }
           case 74: break;
           case 25: 
-            { return createToken("division", "");
+            { return createToken("operator","division");
             }
           case 75: break;
           case 26: 
-            { return createToken("or", "");
+            { return createToken("operator","or");
             }
           case 76: break;
           case 27: 
-            { return createToken("leftShift", "");
+            { return createToken("operator","leftShift");
             }
           case 77: break;
           case 28: 
-            { return createToken("bracketsLeft", "");
+            { return createToken("operator", "bracketsLeft");
             }
           case 78: break;
           case 29: 
-            { return createToken("greaterEqTo", "");
+            { return createToken("operator","greaterEqTo");
             }
           case 79: break;
           case 30: 
-            { return createToken("modAssign", "");
+            { return createToken("operator","modAssign");
             }
           case 80: break;
           case 31: 
-            { return createToken("rightShift", "");
+            { return createToken("operator","rightShift");
             }
           case 81: break;
           case 32: 
-            { return createToken("lessEqTo", "");
+            { return createToken("operator","lessEqTo");
             }
           case 82: break;
           case 33: 
-            { return createToken("and", "");
+            { return createToken("operator","and");
             }
           case 83: break;
           case 34: 
-            { return createToken("andAssign", "");
+            { return createToken("operator","andAssign");
             }
           case 84: break;
           case 35: 
-            { return createToken("xorAssign", "");
+            { return createToken("operator","xorAssign");
             }
           case 85: break;
           case 36: 
-            { return createToken("notEqualsTo", "");
+            { return createToken("operator","notEqualsTo");
             }
           case 86: break;
           case 37: 
@@ -852,55 +852,55 @@ private CppToken createToken(String name, String value) {
             }
           case 87: break;
           case 38: 
-            { return createToken("equalsTo", "");
+            { return createToken("operator","equalsTo");
             }
           case 88: break;
           case 39: 
-            { return createToken("multAssign", "");
+            { return createToken("operator","multAssign");
             }
           case 89: break;
           case 40: 
-            { return createToken("addAssign", "");
+            { return createToken("operator","addAssign");
             }
           case 90: break;
           case 41: 
-            { return createToken("increment", "");
+            { return createToken("operator","increment");
             }
           case 91: break;
           case 42: 
-            { return createToken("subAssign", "");
+            { return createToken("operator","subAssign");
             }
           case 92: break;
           case 43: 
-            { return createToken("decrement", "");
+            { return createToken("operator","decrement");
             }
           case 93: break;
           case 44: 
-            { return createToken("divAssign", "");
+            { return createToken("operator","divAssign");
             }
           case 94: break;
           case 45: 
-            { return createToken("leftShiftAssign", "");
+            { return createToken("operator","leftShiftAssign");
             }
           case 95: break;
           case 46: 
-            { return createToken("rightShiftAssign", "");
+            { return createToken("operator","rightShiftAssign");
             }
           case 96: break;
           case 47: 
-            { return createToken("ellipsis", "");
+            { return createToken("operator", "ellipsis");
             }
           case 97: break;
           case 48: 
-            { return createToken("orAssign", "");
+            { return createToken("operator","orAssign");
             }
           case 98: break;
           case 49: 
-            { return createToken("bitOr", "");
+            { return createToken("operator","bitOr");
             }
           case 99: break;
           case 50: 
-            { return createToken("macro", "");
+            { return createToken("operator", "macro");
             }
           case 100: break;
           default:
