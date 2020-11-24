@@ -25,7 +25,18 @@ DIGIT = [0-9]
 IDENTIFIER = {NON_DIGIT}+{DIGIT}*
 
 
-INTEGER = 0|[1-9][0-9]*
+INTEGER = ("0"|{INT_DEC}|{INT_HEX}|{INT_BIN})({INT_SUFFIX}?)
+INT_DEC = [1-9]{DIGIT}*
+
+HEX_DIG = [0-9|a-f|A-F]
+INT_HEX = ("0x"|"0X"){HEX_DIG}+
+
+INT_BIN = ("0b"|"0B")[0-1]+
+
+INT_SUFFIX = ({L_SUFFIX}?{U_SUFFIX})|({U_SUFFIX}?{L_SUFFIX})
+L_SUFFIX = "l"|"L"|"LL"|"ll"
+U_SUFFIX = "u"|"U"
+
 
 BRACES_LEFT = "<%" | "{"
 BRACES_RIGHT = "%>" | "}"
