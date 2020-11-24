@@ -19,7 +19,12 @@ private CppToken createToken(String name, String value) {
 
 
 BLANK = [\n| |\t|\r]
-ID = [_|a-z|A-Z][a-z|A-Z|0-9|_]*
+
+NON_DIGIT = [a-z|[A-Z]|_]
+DIGIT = [0-9]
+IDENTIFIER = {NON_DIGIT}+{DIGIT}*
+
+
 INTEGER = 0|[1-9][0-9]*
 
 BRACES_LEFT = "<%" | "{"
@@ -108,6 +113,6 @@ NOT_EQ = "!=" | "not_eq"
 ">>="			    {return createToken("operator","rightShiftAssign");}
 
 
-{ID}                         { return createToken("id", yytext()); }
+{IDENTIFIER}                         { return createToken("identifier", yytext()); }
 
 . { throw new RuntimeException("Caractere inválido " + yytext()); }
