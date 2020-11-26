@@ -17,13 +17,13 @@ private CppToken createToken(String name, String value) {
 %line
 %column
 
-
 BLANK = [\n| |\t|\r]
 
 NON_DIGIT = [a-z|[A-Z]|_]
 DIGIT = [0-9]
 IDENTIFIER = {NON_DIGIT}+{DIGIT}*
 
+NUMBER = {INTEGER} | {FLOAT}
 
 INTEGER = ("0"|{INT_DEC}|{INT_HEX}|{INT_BIN})({INT_SUFFIX}?)
 INT_DEC = [1-9]{DIGIT}*
@@ -37,6 +37,12 @@ INT_SUFFIX = ({L_SUFFIX}?{U_SUFFIX})|({U_SUFFIX}?{L_SUFFIX})
 L_SUFFIX = "l"|"L"|"LL"|"ll"
 U_SUFFIX = "u"|"U"
 
+FLOAT = ({FRACTIONAL_CONSTANT}{EXPONENT_PART}?{FLOAT_SUFFIX}?) | {DIGIT_SEQUENCE}{EXPONENT_PART}{FLOAT_SUFFIX}?
+
+DIGIT_SEQUENCE = {DIGIT}+
+FRACTIONAL_CONSTANT = {DIGIT_SEQUENCE}?"."{DIGIT_SEQUENCE}
+EXPONENT_PART = ("e"|"E")("+"|"-")?{DIGIT_SEQUENCE}
+FLOAT_SUFFIX = "f"|"F"|"l"|"L"
 
 BRACES_LEFT = "<%" | "{"
 BRACES_RIGHT = "%>" | "}"
@@ -62,7 +68,7 @@ NOT_EQ = "!=" | "not_eq"
 
 "if"                         { return createToken("if", yytext()); }
 {BLANK}                      { }
-{INTEGER}                    { return createToken("integer", yytext()); }
+{NUMBER}                    { return createToken("number", yytext()); }
 
 /* Simbolos especiais */
 {BRACES_LEFT} 	    {return createToken("operator", "bracesLeft");}
