@@ -166,6 +166,7 @@ HEADER = "<"~">" | "\"~"\"
 <STRING> {
   \"                             { yybegin(YYINITIAL); return createToken("string", string.toString());}  
   {STRINGCHARACTER}+             { string.append(yytext());}
-  \\.                            {  }
+  "\\b"                          { string.append( '\b' ); }
+  "\\t"                          { string.append( '\t' ); }
   \r|\n|\r\n               { yybegin(YYINITIAL);  }
 }
