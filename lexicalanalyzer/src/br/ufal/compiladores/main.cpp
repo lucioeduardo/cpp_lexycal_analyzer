@@ -6,7 +6,8 @@ int main(){
 	char inicial = 'o';
 
 	int k = 1234;
-	
+	string qqq;
+	qqq = "chato";
 	long long x = 123ull;
 
 

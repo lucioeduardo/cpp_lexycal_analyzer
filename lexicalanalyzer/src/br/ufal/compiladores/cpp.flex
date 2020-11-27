@@ -4,6 +4,8 @@ package br.ufal.compiladores;
 
 %{
 
+StringBuilder string = new StringBuilder();
+
 private CppToken createToken(String name, String value) {
     return new CppToken(name, value, yyline, yycolumn);
 }
@@ -16,6 +18,7 @@ private CppToken createToken(String name, String value) {
 %type CppToken
 %line
 %column
+%state STRING
 
 BLANK = [\n| |\t|\r]
 COMMENTS = "//".* | "/*"~"*/"
@@ -25,7 +28,8 @@ DIGIT = [0-9]
 IDENTIFIER = {NON_DIGIT}+{DIGIT}*
 
 NUMBER = {INTEGER} | {FLOAT}
-SINGLECHARACTER = [^\r\n\'\\]   
+SINGLECHARACTER = [^\r\n\'\\]
+STRINGCHARACTER = [^\r\n\"\\]
 
 INTEGER = ("0"|{INT_DEC}|{INT_HEX}|{INT_BIN})({INT_SUFFIX}?)
 INT_DEC = [1-9]{DIGIT}*
@@ -70,87 +74,98 @@ KEYWORD = "alignas" | "alignof" | "asm" | "auto" | "bool" | "break" | "case" | "
 
 HEADER = "<"~">" | "\"~"\"
 
+
 %%
 
-{BLANK}                      { }
-{NUMBER}                    { return createToken("number", yytext()); }
-{COMMENTS}                   { }
-{INTEGER}                    { return createToken("integer", yytext()); }
+<YYINITIAL> {
+
+    {BLANK}                      { }
+    {NUMBER}                    { return createToken("number", yytext()); }
+    {COMMENTS}                   { }
+    {INTEGER}                    { return createToken("integer", yytext()); }
 
 
-/* Simbolos especiais */
-{BRACES_LEFT} 	    {return createToken("operator", "bracesLeft");}
-{BRACES_RIGHT}	    {return createToken("operator", "bracesRight");}
-"(" 		        {return createToken("operator", "parenthesesLeft");}
-")"			        {return createToken("operator", "parenthesesRight");}
-{BRACKETS_LEFT} 	{return createToken("operator", "bracketsLeft");}
-{BRACKETS_RIGHT}	{return createToken("operator", "bracketsRight");}
-","			        {return createToken("operator", "comma");}
-":"		        	{return createToken("operator", "colon");}
-";"     			{return createToken("operator", "semiColon");}
-"*"			        {return createToken("operator", "asterisk");}
-{PRE_PROCESSOR}		{return createToken("operator", "preProcessor");}
-{MACRO}		        {return createToken("operator", "macro");}
-"..."		        {return createToken("operator", "ellipsis");}
+    /* Simbolos especiais */
+    {BRACES_LEFT} 	    {return createToken("operator", "bracesLeft");}
+    {BRACES_RIGHT}	    {return createToken("operator", "bracesRight");}
+    "(" 		        {return createToken("operator", "parenthesesLeft");}
+    ")"			        {return createToken("operator", "parenthesesRight");}
+    {BRACKETS_LEFT} 	{return createToken("operator", "bracketsLeft");}
+    {BRACKETS_RIGHT}	{return createToken("operator", "bracketsRight");}
+    ","			        {return createToken("operator", "comma");}
+    ":"		        	{return createToken("operator", "colon");}
+    ";"     			{return createToken("operator", "semiColon");}
+    "*"			        {return createToken("operator", "asterisk");}
+    {PRE_PROCESSOR}		{return createToken("operator", "preProcessor");}
+    {MACRO}		        {return createToken("operator", "macro");}
+    "..."		        {return createToken("operator", "ellipsis");}
 
 
-/* Operadores Aritméticos */
-"+"			{return createToken("operator","addition");}
-"-"			{return createToken("operator","subtraction");}
-"/"			{return createToken("operator","division");}
-"%"			{return createToken("operator","modulus");}
-"++"		{return createToken("operator","increment");}
-"--"		{return createToken("operator","decrement");}
+    /* Operadores Aritméticos */
+    "+"			{return createToken("operator","addition");}
+    "-"			{return createToken("operator","subtraction");}
+    "/"			{return createToken("operator","division");}
+    "%"			{return createToken("operator","modulus");}
+    "++"		{return createToken("operator","increment");}
+    "--"		{return createToken("operator","decrement");}
 
-/* Operadores Relacionais */
-"=="		{return createToken("operator","equalsTo");}
-{NOT_EQ}	{return createToken("operator","notEqualsTo");}
-">="		{return createToken("operator","lessEqTo");}
-"<="		{return createToken("operator","greaterEqTo");}
-"<"			{return createToken("operator","lessThan");}
-">"			{return createToken("operator","greaterThan");}
+    /* Operadores Relacionais */
+    "=="		{return createToken("operator","equalsTo");}
+    {NOT_EQ}	{return createToken("operator","notEqualsTo");}
+    ">="		{return createToken("operator","lessEqTo");}
+    "<="		{return createToken("operator","greaterEqTo");}
+    "<"			{return createToken("operator","lessThan");}
+    ">"			{return createToken("operator","greaterThan");}
 
-/* Operadores lógicos */
-{AND}      {return createToken("operator","and");}
-{OR}       {return createToken("operator","or");}
-{NOT}      {return createToken("operator","not");}
+    /* Operadores lógicos */
+    {AND}      {return createToken("operator","and");}
+    {OR}       {return createToken("operator","or");}
+    {NOT}      {return createToken("operator","not");}
 
-/* Operadores bitwise */
+    /* Operadores bitwise */
 
-{BIT_AND}	{return createToken("operator","bitAnd");}
-{BIT_OR}	{return createToken("operator","bitOr");}
-{BIT_NOT}   {return createToken("operator","bitNot");}
-{XOR}	    {return createToken("operator","xor");}
-">>"		{return createToken("operator","rightShift");}
-"<<"		{return createToken("operator","leftShift");}
+    {BIT_AND}	{return createToken("operator","bitAnd");}
+    {BIT_OR}	{return createToken("operator","bitOr");}
+    {BIT_NOT}   {return createToken("operator","bitNot");}
+    {XOR}	    {return createToken("operator","xor");}
+    ">>"		{return createToken("operator","rightShift");}
+    "<<"		{return createToken("operator","leftShift");}
 
-/* Operadores de atribuição */
-"="			        {return createToken("operator","assignment");}
-"+="			    {return createToken("operator","addAssign");}
-"*="			    {return createToken("operator","multAssign");}
-"/="			    {return createToken("operator","divAssign");}
-"-="			    {return createToken("operator","subAssign");}
-"%="			    {return createToken("operator","modAssign");}
-{AND_EQ}			{return createToken("operator","andAssign");}
-{XOR_EQ}			{return createToken("operator","xorAssign");}
-{OR_EQ}			    {return createToken("operator","orAssign");}
-"<<="			    {return createToken("operator","leftShiftAssign");}
-">>="			    {return createToken("operator","rightShiftAssign");}
+    /* Operadores de atribuição */
+    "="			        {return createToken("operator","assignment");}
+    "+="			    {return createToken("operator","addAssign");}
+    "*="			    {return createToken("operator","multAssign");}
+    "/="			    {return createToken("operator","divAssign");}
+    "-="			    {return createToken("operator","subAssign");}
+    "%="			    {return createToken("operator","modAssign");}
+    {AND_EQ}			{return createToken("operator","andAssign");}
+    {XOR_EQ}			{return createToken("operator","xorAssign");}
+    {OR_EQ}			    {return createToken("operator","orAssign");}
+    "<<="			    {return createToken("operator","leftShiftAssign");}
+    ">>="			    {return createToken("operator","rightShiftAssign");}
 
-/* boolean literals */
-"true"                         { return createToken("boolean", yytext());}
-"false"                        { return createToken("boolean", yytext());}
+    /* boolean literals */
+    "true"                         { return createToken("boolean", yytext());}
+    "false"                        { return createToken("boolean", yytext());}
 
-\'{SINGLECHARACTER}\'           {return createToken("character_literal", yytext());}
+    \'{SINGLECHARACTER}\'           {return createToken("character_literal", yytext());}
+    \"                              {yybegin(STRING); string.setLength(0);}
 
+    {KEYWORD}                         {return createToken("keyword", yytext());}
+    {HEADER}        {   
+                        String str = yytext();
+                        str = str.substring(1, str.length()-1);
+                        return createToken("header", str);
+                    }
 
-{KEYWORD}                         {return createToken("keyword", yytext());}
-{HEADER}        {   
-                    String str = yytext();
-                    str = str.substring(1, str.length()-1);
-                    return createToken("header", str);
-                }
+    {IDENTIFIER}                         { return createToken("identifier", yytext()); }
 
-{IDENTIFIER}                         { return createToken("identifier", yytext()); }
+    . { throw new RuntimeException("Caractere inválido " + yytext()); }
+}
 
-. { throw new RuntimeException("Caractere inválido " + yytext()); }
+<STRING> {
+  \"                             { yybegin(YYINITIAL); return createToken("string", string.toString());}  
+  {STRINGCHARACTER}+             { string.append(yytext());}
+  \\.                            {  }
+  \r|\n|\r\n               { yybegin(YYINITIAL);  }
+}
