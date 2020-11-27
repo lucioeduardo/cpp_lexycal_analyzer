@@ -18,7 +18,6 @@ public class LexicalAnalyzer {
 
   /** lexical states */
   public static final int YYINITIAL = 0;
-  public static final int CHARLITERAL = 2;
 
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -27,7 +26,7 @@ public class LexicalAnalyzer {
    * l is of the form l = 2*k, k a non negative integer
    */
   private static final int ZZ_LEXSTATE[] = { 
-     0,  0,  0, 0
+     0, 0
   };
 
   /** 
@@ -59,17 +58,16 @@ public class LexicalAnalyzer {
     "\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
     "\1\15\1\16\2\3\1\17\1\3\1\20\1\21\1\22"+
     "\1\3\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
-    "\1\3\1\32\3\4\5\0\3\3\1\33\1\0\1\34"+
-    "\1\35\1\36\1\37\1\40\1\41\1\42\1\16\1\43"+
-    "\1\44\1\45\2\3\1\46\1\47\1\32\1\50\1\51"+
-    "\1\52\1\53\1\54\1\55\4\4\1\33\1\0\2\4"+
-    "\1\3\1\20\1\3\1\33\1\56\1\57\1\0\1\60"+
-    "\1\46\1\22\5\3\1\0\3\3\1\21\2\3\1\61"+
-    "\1\0\2\3\1\62\1\50\1\17\1\0\1\47\1\51"+
-    "\1\63";
+    "\1\3\1\32\3\4\5\0\3\3\1\4\1\0\1\33"+
+    "\1\34\1\35\1\36\1\37\1\40\1\41\1\16\1\42"+
+    "\1\43\1\44\2\3\1\45\1\46\1\32\1\47\1\50"+
+    "\1\51\1\52\1\53\1\54\5\4\1\0\2\4\1\3"+
+    "\1\20\1\3\1\55\1\56\1\0\1\57\1\45\1\22"+
+    "\5\3\1\0\3\3\1\21\2\3\1\60\1\0\2\3"+
+    "\1\61\1\47\1\17\1\0\1\46\1\50\1\62";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[114];
+    int [] result = new int[113];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -104,14 +102,14 @@ public class LexicalAnalyzer {
     "\0\66\0\66\0\u08a6\0\66\0\u08dc\0\66\0\u0912\0\u0948"+
     "\0\66\0\66\0\u097e\0\66\0\66\0\154\0\66\0\66"+
     "\0\66\0\u09b4\0\66\0\u09ea\0\u0a20\0\u0a56\0\u0a8c\0\u0ac2"+
-    "\0\u0af8\0\u0b2e\0\u0b64\0\u0b9a\0\66\0\66\0\66\0\u0bd0"+
-    "\0\66\0\u0c06\0\u0c3c\0\u0c72\0\u0ca8\0\u0cde\0\u0d14\0\u0d4a"+
-    "\0\u0d80\0\u0db6\0\u0dec\0\u0e22\0\154\0\u0e58\0\u0e8e\0\154"+
-    "\0\u0ec4\0\u0efa\0\u0f30\0\154\0\154\0\154\0\u0f66\0\154"+
-    "\0\154\0\66";
+    "\0\u0af8\0\u0b2e\0\u0b64\0\u0b9a\0\66\0\66\0\u0bd0\0\66"+
+    "\0\u0c06\0\u0c3c\0\u0c72\0\u0ca8\0\u0cde\0\u0d14\0\u0d4a\0\u0d80"+
+    "\0\u0db6\0\u0dec\0\u0e22\0\154\0\u0e58\0\u0e8e\0\154\0\u0ec4"+
+    "\0\u0efa\0\u0f30\0\154\0\154\0\154\0\u0f66\0\154\0\154"+
+    "\0\66";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[114];
+    int [] result = new int[113];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -185,68 +183,68 @@ public class LexicalAnalyzer {
     "\2\0\3\4\1\0\1\4\1\0\2\4\11\0\2\4"+
     "\2\45\6\4\1\45\3\4\1\0\2\4\2\0\2\4"+
     "\10\0\3\4\1\0\2\4\2\0\2\4\1\124\1\0"+
-    "\1\4\1\0\2\4\13\0\2\62\6\0\1\62\2\125"+
-    "\2\0\2\53\2\0\2\125\57\0\1\126\121\0\1\127"+
-    "\41\0\1\130\111\0\1\131\13\0\2\4\2\45\6\4"+
+    "\1\4\1\0\2\4\13\0\2\62\6\0\1\62\2\113"+
+    "\2\0\2\53\2\0\2\113\57\0\1\125\121\0\1\126"+
+    "\41\0\1\127\111\0\1\130\13\0\2\4\2\45\6\4"+
     "\1\45\3\4\1\0\2\4\2\0\2\4\10\0\2\4"+
-    "\1\132\1\0\2\4\2\0\3\4\1\0\1\4\1\0"+
+    "\1\131\1\0\2\4\2\0\3\4\1\0\1\4\1\0"+
     "\2\4\11\0\2\4\2\45\6\4\1\45\3\4\1\0"+
     "\2\4\2\0\2\4\10\0\3\4\1\0\2\4\2\0"+
-    "\2\4\1\133\1\0\1\4\1\0\2\4\11\0\2\4"+
+    "\2\4\1\132\1\0\1\4\1\0\2\4\11\0\2\4"+
     "\2\45\6\4\1\45\3\4\1\0\2\4\2\0\2\4"+
     "\10\0\3\4\1\0\2\4\2\0\3\4\1\0\1\4"+
-    "\1\0\1\134\1\4\26\0\1\113\63\0\1\113\66\0"+
-    "\1\113\53\0\2\116\6\0\1\116\2\125\6\0\2\125"+
+    "\1\0\1\133\1\4\26\0\1\113\63\0\1\113\66\0"+
+    "\1\113\53\0\2\116\6\0\1\116\2\113\6\0\2\113"+
     "\43\0\2\116\6\0\1\116\54\0\5\120\2\0\3\120"+
     "\1\47\1\50\1\51\1\0\2\120\2\0\2\120\10\0"+
     "\1\120\1\0\1\120\31\0\1\121\6\0\1\121\1\47"+
     "\1\50\1\51\50\0\2\4\2\45\6\4\1\45\3\4"+
     "\1\0\2\4\2\0\2\4\10\0\3\4\1\0\2\4"+
-    "\2\0\1\4\1\135\1\4\1\0\1\4\1\0\2\4"+
+    "\2\0\1\4\1\134\1\4\1\0\1\4\1\0\2\4"+
     "\11\0\2\4\2\45\6\4\1\45\3\4\1\0\2\4"+
     "\2\0\2\4\10\0\3\4\1\0\2\4\2\0\3\4"+
-    "\1\0\1\4\1\0\1\136\1\4\11\0\2\4\2\45"+
+    "\1\0\1\4\1\0\1\135\1\4\11\0\2\4\2\45"+
     "\6\4\1\45\3\4\1\0\2\4\2\0\2\4\10\0"+
-    "\1\137\2\4\1\0\1\140\1\4\2\0\3\4\1\0"+
-    "\1\4\1\0\2\4\43\0\1\141\33\0\2\4\2\45"+
+    "\1\136\2\4\1\0\1\137\1\4\2\0\3\4\1\0"+
+    "\1\4\1\0\2\4\43\0\1\140\33\0\2\4\2\45"+
     "\6\4\1\45\3\4\1\0\2\4\2\0\2\4\10\0"+
     "\3\4\1\0\2\4\2\0\3\4\1\0\1\4\1\0"+
-    "\1\142\1\4\11\0\2\4\2\45\6\4\1\45\3\4"+
+    "\1\141\1\4\11\0\2\4\2\45\6\4\1\45\3\4"+
     "\1\0\2\4\2\0\2\4\10\0\3\4\1\0\2\4"+
-    "\2\0\3\4\1\0\1\4\1\0\1\143\1\4\11\0"+
-    "\2\4\2\45\6\4\1\45\3\4\1\0\1\144\1\4"+
+    "\2\0\3\4\1\0\1\4\1\0\1\142\1\4\11\0"+
+    "\2\4\2\45\6\4\1\45\3\4\1\0\1\143\1\4"+
     "\2\0\2\4\10\0\3\4\1\0\2\4\2\0\3\4"+
     "\1\0\1\4\1\0\2\4\11\0\2\4\2\45\6\4"+
-    "\1\45\1\145\2\4\1\0\2\4\2\0\2\4\10\0"+
+    "\1\45\1\144\2\4\1\0\2\4\2\0\2\4\10\0"+
     "\3\4\1\0\2\4\2\0\3\4\1\0\1\4\1\0"+
     "\2\4\11\0\2\4\2\45\6\4\1\45\3\4\1\0"+
-    "\1\146\1\4\2\0\2\4\10\0\3\4\1\0\2\4"+
+    "\1\145\1\4\2\0\2\4\10\0\3\4\1\0\2\4"+
     "\2\0\3\4\1\0\1\4\1\0\2\4\11\0\2\4"+
     "\2\45\6\4\1\45\3\4\1\0\2\4\2\0\2\4"+
-    "\10\0\1\4\1\147\1\4\1\0\2\4\2\0\3\4"+
+    "\10\0\1\4\1\146\1\4\1\0\2\4\2\0\3\4"+
     "\1\0\1\4\1\0\2\4\11\0\2\4\2\45\6\4"+
     "\1\45\3\4\1\0\2\4\2\0\2\4\10\0\3\4"+
-    "\1\0\1\4\1\150\2\0\3\4\1\0\1\4\1\0"+
-    "\2\4\43\0\1\151\33\0\2\4\2\45\6\4\1\45"+
-    "\3\4\1\0\1\152\1\4\2\0\2\4\10\0\3\4"+
+    "\1\0\1\4\1\147\2\0\3\4\1\0\1\4\1\0"+
+    "\2\4\43\0\1\150\33\0\2\4\2\45\6\4\1\45"+
+    "\3\4\1\0\1\151\1\4\2\0\2\4\10\0\3\4"+
     "\1\0\2\4\2\0\3\4\1\0\1\4\1\0\2\4"+
-    "\11\0\2\4\2\45\6\4\1\45\3\4\1\0\1\153"+
+    "\11\0\2\4\2\45\6\4\1\45\3\4\1\0\1\152"+
     "\1\4\2\0\2\4\10\0\3\4\1\0\2\4\2\0"+
     "\3\4\1\0\1\4\1\0\2\4\11\0\2\4\2\45"+
     "\6\4\1\45\3\4\1\0\2\4\2\0\2\4\10\0"+
     "\3\4\1\0\2\4\2\0\3\4\1\0\1\4\1\0"+
-    "\1\4\1\154\11\0\2\4\2\45\6\4\1\45\3\4"+
+    "\1\4\1\153\11\0\2\4\2\45\6\4\1\45\3\4"+
     "\1\0\2\4\2\0\2\4\10\0\3\4\1\0\2\4"+
-    "\2\0\3\4\1\0\1\4\1\0\1\4\1\155\11\0"+
+    "\2\0\3\4\1\0\1\4\1\0\1\4\1\154\11\0"+
     "\2\4\2\45\6\4\1\45\3\4\1\0\2\4\2\0"+
-    "\2\4\10\0\2\4\1\156\1\0\2\4\2\0\3\4"+
-    "\1\0\1\4\1\0\2\4\45\0\1\157\31\0\2\4"+
+    "\2\4\10\0\2\4\1\155\1\0\2\4\2\0\3\4"+
+    "\1\0\1\4\1\0\2\4\45\0\1\156\31\0\2\4"+
     "\2\45\6\4\1\45\3\4\1\0\2\4\2\0\2\4"+
     "\10\0\3\4\1\0\2\4\2\0\3\4\1\0\1\4"+
-    "\1\0\1\4\1\160\11\0\2\4\2\45\6\4\1\45"+
+    "\1\0\1\4\1\157\11\0\2\4\2\45\6\4\1\45"+
     "\3\4\1\0\2\4\2\0\2\4\10\0\3\4\1\0"+
-    "\2\4\2\0\3\4\1\0\1\4\1\0\1\4\1\161"+
-    "\45\0\1\162\27\0";
+    "\2\4\2\0\3\4\1\0\1\4\1\0\1\4\1\160"+
+    "\45\0\1\161\27\0";
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[3996];
@@ -291,11 +289,11 @@ public class LexicalAnalyzer {
     "\5\1\1\11\3\1\4\11\7\1\5\0\4\1\1\0"+
     "\4\11\1\1\2\11\1\1\1\11\1\1\1\11\2\1"+
     "\2\11\1\1\2\11\1\1\3\11\1\1\1\11\3\1"+
-    "\1\0\5\1\3\11\1\0\1\11\7\1\1\0\7\1"+
+    "\1\0\5\1\2\11\1\0\1\11\7\1\1\0\7\1"+
     "\1\0\5\1\1\0\2\1\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[114];
+    int [] result = new int[113];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -751,207 +749,211 @@ private CppToken createToken(String name, String value) {
           case 1: 
             { throw new RuntimeException("Caractere inválido " + yytext());
             }
-          case 52: break;
+          case 54: break;
           case 2: 
             { 
             }
-          case 53: break;
+          case 55: break;
           case 3: 
             { return createToken("operator","division");
             }
-          case 54: break;
+          case 56: break;
           case 4: 
-            { return createToken("operator", "asterisk");
+            { return createToken("number", yytext());
             }
-          case 55: break;
+          case 57: break;
           case 5: 
             { return createToken("operator","addition");
             }
-          case 56: break;
+          case 58: break;
           case 6: 
             { return createToken("operator","subtraction");
             }
-          case 57: break;
+          case 59: break;
           case 7: 
             { return createToken("operator","lessThan");
             }
-          case 58: break;
+          case 60: break;
           case 8: 
             { return createToken("operator","modulus");
             }
-          case 59: break;
+          case 61: break;
           case 9: 
             { return createToken("operator", "bracesLeft");
             }
-          case 60: break;
+          case 62: break;
           case 10: 
             { return createToken("operator","greaterThan");
             }
-          case 61: break;
+          case 63: break;
           case 11: 
             { return createToken("operator", "bracesRight");
             }
-          case 62: break;
+          case 64: break;
           case 12: 
             { return createToken("operator", "colon");
             }
-          case 63: break;
+          case 65: break;
           case 13: 
             { return createToken("operator", "bracketsRight");
             }
-          case 64: break;
+          case 66: break;
           case 14: 
             { return createToken("operator", "preProcessor");
             }
-          case 65: break;
+          case 67: break;
           case 15: 
             { return createToken("operator","bitAnd");
             }
-          case 66: break;
+          case 68: break;
           case 16: 
             { return createToken("operator","xor");
             }
-          case 67: break;
+          case 69: break;
           case 17: 
             { return createToken("operator","bitNot");
             }
-          case 68: break;
+          case 70: break;
           case 18: 
             { return createToken("operator","not");
             }
-          case 69: break;
+          case 71: break;
           case 19: 
             { return createToken("operator","assignment");
             }
-          case 70: break;
+          case 72: break;
           case 20: 
             { return createToken("operator", "parenthesesLeft");
             }
-          case 71: break;
+          case 73: break;
           case 21: 
             { return createToken("operator", "parenthesesRight");
             }
-          case 72: break;
+          case 74: break;
           case 22: 
             { return createToken("operator", "comma");
             }
-          case 73: break;
+          case 75: break;
           case 23: 
             { return createToken("operator", "semiColon");
             }
-          case 74: break;
+          case 76: break;
           case 24: 
             { return createToken("operator", "asterisk");
             }
-          case 75: break;
+          case 77: break;
           case 25: 
             { return createToken("operator","subtraction");
             }
-          case 76: break;
+          case 78: break;
           case 26: 
             { return createToken("operator","divAssign");
             }
-          case 77: break;
+          case 79: break;
           case 27: 
-            { return createToken("float", yytext());
-            }
-          case 78: break;
-          case 28: 
             { return createToken("operator","increment");
             }
-          case 79: break;
-          case 29: 
+          case 80: break;
+          case 28: 
             { return createToken("operator","addAssign");
             }
-          case 80: break;
-          case 30: 
+          case 81: break;
+          case 29: 
             { return createToken("operator","decrement");
             }
-          case 81: break;
-          case 31: 
+          case 82: break;
+          case 30: 
             { return createToken("operator","subAssign");
             }
-          case 82: break;
-          case 32: 
+          case 83: break;
+          case 31: 
             { return createToken("operator","leftShift");
             }
-          case 83: break;
-          case 33: 
+          case 84: break;
+          case 32: 
             { return createToken("operator", "bracketsLeft");
             }
-          case 84: break;
-          case 34: 
+          case 85: break;
+          case 33: 
             { return createToken("operator","greaterEqTo");
             }
-          case 85: break;
-          case 35: 
+          case 86: break;
+          case 34: 
             { return createToken("operator","modAssign");
             }
-          case 86: break;
-          case 36: 
+          case 87: break;
+          case 35: 
             { return createToken("operator","rightShift");
             }
-          case 87: break;
-          case 37: 
+          case 88: break;
+          case 36: 
             { return createToken("operator","lessEqTo");
             }
-          case 88: break;
-          case 38: 
+          case 89: break;
+          case 37: 
             { return createToken("operator","and");
             }
-          case 89: break;
-          case 39: 
+          case 90: break;
+          case 38: 
             { return createToken("operator","andAssign");
             }
-          case 90: break;
-          case 40: 
+          case 91: break;
+          case 39: 
             { return createToken("operator","xorAssign");
             }
-          case 91: break;
-          case 41: 
+          case 92: break;
+          case 40: 
             { return createToken("operator","notEqualsTo");
             }
-          case 92: break;
-          case 42: 
+          case 93: break;
+          case 41: 
             { return createToken("if", yytext());
             }
-          case 93: break;
-          case 43: 
+          case 94: break;
+          case 42: 
             { return createToken("operator","equalsTo");
             }
-          case 94: break;
-          case 44: 
+          case 95: break;
+          case 43: 
             { return createToken("operator","multAssign");
             }
-          case 95: break;
-          case 45: 
-            { return createToken("operator","divAssign");
-            }
           case 96: break;
-          case 46: 
-            { return createToken("operator", "ellipsis");
+          case 44: 
+            { return createToken("operator","subAssign");
             }
           case 97: break;
-          case 47: 
+          case 45: 
+            { return createToken("operator", "ellipsis");
+            }
+          case 95: break;
+          case 46: 
             { return createToken("operator","leftShiftAssign");
             }
-          case 98: break;
-          case 48: 
+          case 96: break;
+          case 47: 
             { return createToken("operator","rightShiftAssign");
             }
-          case 99: break;
-          case 49: 
-            { return createToken("operator","bitOr");
-            }
-          case 100: break;
-          case 50: 
-            { return createToken("operator","orAssign");
-            }
           case 101: break;
-          case 51: 
-            { return createToken("operator", "macro");
+          case 49: 
+            { return createToken("character_literal", yytext());
             }
           case 102: break;
+          case 50: 
+            { return createToken("boolean", yytext());
+            }
+          case 103: break;
+          case 51: 
+            { return createToken("operator","bitOr");
+            }
+          case 104: break;
+          case 52: 
+            { return createToken("operator","orAssign");
+            }
+          case 105: break;
+          case 53: 
+            { return createToken("operator", "macro");
+            }
+          case 106: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
