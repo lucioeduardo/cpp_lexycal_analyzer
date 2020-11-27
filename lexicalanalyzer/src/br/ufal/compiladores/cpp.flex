@@ -19,11 +19,13 @@ private CppToken createToken(String name, String value) {
 
 
 BLANK = [\n| |\t|\r]
+COMMENTS = "//".* | "/*"~"*/"
 
 NON_DIGIT = [a-z|[A-Z]|_]
 DIGIT = [0-9]
 IDENTIFIER = {NON_DIGIT}+{DIGIT}*
 
+SINGLECHARACTER = [^\r\n\'\\]   
 
 INTEGER = ("0"|{INT_DEC}|{INT_HEX}|{INT_BIN})({INT_SUFFIX}?)
 INT_DEC = [1-9]{DIGIT}*
@@ -58,11 +60,16 @@ OR_EQ = "!=" | "or_eq"
 XOR_EQ = "^=" | "xor_eq"
 NOT_EQ = "!=" | "not_eq"
 
+KEYWORD = "alignas" | "alignof" | "asm" | "auto" | "bool" | "break" | "case" | "catch" | "char" | "char16_t" | "char32_t" | "class" | "const" | "constexpr" | "const_cast" | "2" | "continue" | "decltype" | "default" | "delete" | "do" | "double" | "dynamic_cast" | "else" | "enum" | "explicit" | "export" | "extern" | "false" | "float" | "for" | "friend" |"goto" | "if" | "inline" | "int" | "long" | "mutable" | "namespace" | "new" | "noexcept" | "nullptr" | "operator" | "private" | "protected" | "public" | "register" |"reinterpret_cast" | "return" | "short" | "signed" | "sizeof" | "static" | "static_assert" | "static_cast" | "struct"| "switch" | "template" | "this" | "thread_local" | "throw"| "true" | "try" | "typedef" | "typeid" | "typename" | "union" | "unsigned" | "using" | "virtual" | "void" | "volatile" | "wchar_t" | "while" | "if" | "elif" | "else"| "endif" | "ifdef" | "ifndef" | "define" | "undef" | "include" | "line" | "error" | "pragma" | "final" | "override"
+
+HEADER = "<"~">" | "\"~"\"
+
 %%
 
-"if"                         { return createToken("if", yytext()); }
 {BLANK}                      { }
+{COMMENTS}                   { }
 {INTEGER}                    { return createToken("integer", yytext()); }
+
 
 /* Simbolos especiais */
 {BRACES_LEFT} 	    {return createToken("operator", "bracesLeft");}
@@ -123,6 +130,19 @@ NOT_EQ = "!=" | "not_eq"
 "<<="			    {return createToken("operator","leftShiftAssign");}
 ">>="			    {return createToken("operator","rightShiftAssign");}
 
+/* boolean literals */
+"true"                         { return createToken("boolean", yytext());}
+"false"                        { return createToken("boolean", yytext());}
+
+\'{SINGLECHARACTER}\'           {return createToken("character_literal", yytext());}
+
+
+{KEYWORD}                         {return createToken("keyword", yytext());}
+{HEADER}        {   
+                    String str = yytext();
+                    str = str.substring(1, str.length()-1);
+                    return createToken("header", str);
+                }
 
 {IDENTIFIER}                         { return createToken("identifier", yytext()); }
 
